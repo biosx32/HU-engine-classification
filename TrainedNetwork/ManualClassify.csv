@@ -6,4 +6,5 @@ engines.wav,190,200,HealtyEngine1
 engines.wav,207,216,HealtyEngine2
 engines.wav,222,323,HealtyEngine3
 engines.wav,334,337,HealtyEngine4
-engines.wav,0,49,SilenceOrNoise
+engines.wav,0,10,SilenceOrNoise1
+engines.wav,20,30,SilenceOrNoise2

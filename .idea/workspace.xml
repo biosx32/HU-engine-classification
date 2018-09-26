@@ -10,7 +10,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/EngineClassification$Helpers.coverage" NAME="Helpers Coverage Results" MODIFIED="1537936890732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TrainedNetwork" />
+    <SUITE FILE_PATH="coverage/EngineClassification$Helpers.coverage" NAME="Helpers Coverage Results" MODIFIED="1537939341016" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/TrainedNetwork" />
     <SUITE FILE_PATH="coverage/EngineClassification$TrainNetwork.coverage" NAME="TrainNetwork Coverage Results" MODIFIED="1537925204486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
@@ -36,20 +36,25 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Helpers.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Helpers.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/TrainedNetwork/Helpers.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="218" column="62" selection-start-line="218" selection-start-column="62" selection-end-line="218" selection-end-column="62" />
+            <state relative-caret-position="523">
+              <caret line="247" column="25" lean-forward="true" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
+              <folding>
+                <element signature="e#71#108#0" />
+                <element signature="e#223#576#0" />
+                <element signature="e#653#783#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ManualClassify.csv" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ManualClassify.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/TrainedNetwork/ManualClassify.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+            <state relative-caret-position="152">
+              <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -91,6 +96,7 @@
       <find>_dbgPrint</find>
       <find>{</find>
       <find>sd.pl</find>
+      <find>_audio_samples</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -106,8 +112,8 @@
         <option value="$PROJECT_DIR$/Testing.py" />
         <option value="$PROJECT_DIR$/TrainedNetwork/TrainNetwork.py" />
         <option value="$PROJECT_DIR$/TrainedNetwork/ManualClassify.csv___jb_tmp___" />
-        <option value="$PROJECT_DIR$/TrainedNetwork/Helpers.py" />
         <option value="$PROJECT_DIR$/TrainedNetwork/ManualClassify.csv" />
+        <option value="$PROJECT_DIR$/TrainedNetwork/Helpers.py" />
       </list>
     </option>
   </component>
@@ -245,17 +251,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="2062" height="848" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="10" />
       <window_info anchor="bottom" id="Event Log" order="0" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="2" />
       <window_info anchor="bottom" id="Python Console" order="3" />
-      <window_info anchor="right" id="Run" order="6" visible="true" weight="0.34115884" />
+      <window_info active="true" anchor="right" id="Run" order="6" visible="true" weight="0.34115884" />
       <window_info anchor="right" id="Coverage" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="4" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18131869" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18131869" />
       <window_info anchor="bottom" id="Docker" order="5" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="0" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.3286517" />
@@ -279,13 +284,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/TrainedNetwork/Helpers.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="3" />
     </breakpoint-manager>
   </component>
@@ -331,20 +329,25 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/TrainedNetwork/Helpers.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="218" column="62" selection-start-line="218" selection-start-column="62" selection-end-line="218" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/TrainedNetwork/ManualClassify.csv___jb_old___">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/TrainedNetwork/ManualClassify.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        <state relative-caret-position="152">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TrainedNetwork/Helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="523">
+          <caret line="247" column="25" lean-forward="true" selection-start-line="247" selection-start-column="25" selection-end-line="247" selection-end-column="25" />
+          <folding>
+            <element signature="e#71#108#0" />
+            <element signature="e#223#576#0" />
+            <element signature="e#653#783#0" />
+          </folding>
         </state>
       </provider>
     </entry>
