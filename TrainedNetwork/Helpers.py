@@ -5,11 +5,34 @@ import IPython.display
 import librosa.display
 import sounddevice as sd
 from time import sleep
-
+import numpy as np
 
 def _dbg_print(*args, **kwargs):
 	if 1:
 		print("dbg: ", *args, **kwargs)
+
+
+
+def ac_entry(start,end,label):
+	return {
+		'start':start,
+		'end':end,
+		'label': label
+	}
+
+def ac_line(entry):
+	a=float(entry['start'])
+	b=float(entry['end'])
+	c=entry['label']
+	return "{:5.6f}\t{:5.6f}\t{}\n".format(a,b,c)
+
+
+def save_ac_output(filename, label_list):
+	with open(filename, "wt") as outfile:
+		for entry in label_list:
+			label = ac_line(entry)
+			outfile.write(label)
+
 
 
 class Sample:
@@ -106,6 +129,7 @@ def load_audio_samples(audio_cache, sample_sources):
 		end_sample = librosa.time_to_samples(time_end, sr=audio_rate)
 
 		# todo Safter way to get audio part?
+		# todo trim noise
 		try:
 			cutout_data = audio_data[start_sample:end_sample]
 		except IndexError:
@@ -151,6 +175,32 @@ def _sample_to_shifted_group(raw_sample):
 
 	return shifted_samples
 
+
+
+def split_by_samples(raw_sample, sample_count=8000, align_strict=False):
+	_SplitSamples = []
+
+	rsample_data = raw_sample['data']
+	audio_rate = raw_sample['rate']
+	label = raw_sample['label']
+	step_size = sample_count
+	step_counter = 0
+
+	while step_counter < len(rsample_data):
+		end_step = step_counter + step_size
+
+		# last sample is skipped
+
+		if end_step > len(rsample_data):
+			return _SplitSamples
+
+		subsample_data = rsample_data[step_counter:end_step]
+		subsample = create_sample(label, audio_rate, subsample_data)
+		_SplitSamples.append(subsample)
+
+		step_counter += step_size
+
+	return _SplitSamples
 
 def _split_sample(raw_sample, seconds=1):
 	_SplitSamples = []
@@ -201,6 +251,8 @@ def split_samples_by_time(sample_list, split_by=10):
 	return split_samples
 
 
+
+
 def generate_shifted_samples(raw_samples):
 	shifted_samples = []
 
@@ -210,13 +262,13 @@ def generate_shifted_samples(raw_samples):
 
 	return shifted_samples
 
-def get_training_data(fromfile):
+def get_training_data(fromfile, resample=8000, sample_time=1):
 	# Get training sources from CSV file
 	SampleSources = load_sources_file(fromfile)
 
 	# Load all required audio files
 	# todo compare resampling success
-	AudioCache = load_audio_cache(SampleSources, resample=8000)
+	AudioCache = load_audio_cache(SampleSources, resample=resample)
 
 	# Generate samples from AudioCache
 	print("-" * 20, "Raw Samples", "-" * 20)
@@ -234,9 +286,10 @@ def get_training_data(fromfile):
 
 	# Split samples by 5 seconds to get "more" samples
 	print("-" * 20, "Split Samples", "-" * 20)
-	SplittedSamples = split_samples_by_time(RawSamples, split_by=5)
+	SplittedSamples = split_samples_by_time(RawSamples, split_by=sample_time)
 
-	print(*SplittedSamples, sep='\n')
+	print("Generated {} samples".format(len(SplittedSamples)))
+	#print(*SplittedSamples, sep='\n')
 
 	return SplittedSamples
 
