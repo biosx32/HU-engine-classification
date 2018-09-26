@@ -1,0 +1,9 @@
+filename,start,end,label
+engines.wav,49,60,DamagedEngine
+engines.wav,63,73,DamagedEngine
+engines.wav,76,159,DamagedEngine
+engines.wav,190,200,HealtyEngine
+engines.wav,207,216,HealtyEngine
+engines.wav,222,323,HealtyEngine
+engines.wav,334,337,HealtyEngine
+engines.wav,0,49,SilenceOrNoise
