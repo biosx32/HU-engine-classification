@@ -210,46 +210,34 @@ def generate_shifted_samples(raw_samples):
 
 	return shifted_samples
 
+def get_training_data(fromfile):
+	# Get training sources from CSV file
+	SampleSources = load_sources_file(fromfile)
 
-# Get training sources from CSV file
-SampleSources = load_sources_file('ManualClassify.csv')
+	# Load all required audio files
+	# todo compare resampling success
+	AudioCache = load_audio_cache(SampleSources, resample=8000)
 
-# Load all required audio files
-# todo compare resampling success
-AudioCache = load_audio_cache(SampleSources, resample=None)
+	# Generate samples from AudioCache
+	print("-" * 20, "Raw Samples", "-" * 20)
+	RawSamples = load_audio_samples(AudioCache, SampleSources)
+	print(*RawSamples, sep='\n')
 
+	# Experimental trick to create more training data by shifting audio pitch
+	# todo check accuracy
+	# ShiftedSamples = get_shifted_samples(RawSamples)
+	# print(*ShiftedSamples,sep='\n')
+	print("-" * 20, "Shifted Samples", "-" * 20)
 
-print("-"*20,"Raw Samples", "-"*20)
-# Generate samples from AudioCache
-RawSamples = load_audio_samples(AudioCache, SampleSources)
-print(*RawSamples, sep='\n')
+	# Free some resources to save memory
+	# AudioCache = None
 
+	# Split samples by 5 seconds to get "more" samples
+	print("-" * 20, "Split Samples", "-" * 20)
+	SplittedSamples = split_samples_by_time(RawSamples, split_by=5)
 
-print("-"*20,"Shifted Samples", "-"*20)
-# Experimental trick to create more training data by shifting audio pitch
-# todo check accuracy
-# ShiftedSamples = get_shifted_samples(RawSamples)
-# print(*ShiftedSamples,sep='\n')
+	print(*SplittedSamples, sep='\n')
 
-# Free some resources to save memory
-AudioCache = None
-
-print("-"*20,"Split Samples", "-"*20)
-# Split samples by 5 seconds to get "more" samples
-# SplittedSamples = split_samples_by_time(ShiftedSamples, split_by=5)
-SplittedSamples = split_samples_by_time(RawSamples, split_by=5)
-
-print(*SplittedSamples, sep='\n')
-
-
-# todo compare score of shiftsamples vs splitsamples
-
-
-for s in SplittedSamples:
-	sd.play(s['data'], s['rate'])
-	sd.wait()
-
-
-
+	return SplittedSamples
 
 
