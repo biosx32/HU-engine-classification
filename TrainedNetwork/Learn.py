@@ -17,8 +17,8 @@ data_time = 0.5
 train_data = Helpers.get_training_data('ManualClassify.csv', resample=data_resample, sample_time=data_time)
 train_count = len(train_data)
 
-layer1_count = 700
-layer2_count = 240
+layer1_count = 1000
+layer2_count = 200
 
 layer1_drop = 0.5
 layer2_drop = 0.5
@@ -26,7 +26,7 @@ layer2_drop = 0.5
 sample_size = int(data_resample * data_time)
 
 
-batch_size = int(train_count / 40 + 1)
+batch_size = int(train_count / 25 + 1)
 epoch_count = 8
 
 

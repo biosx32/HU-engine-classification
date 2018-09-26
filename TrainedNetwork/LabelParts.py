@@ -48,21 +48,25 @@ def Predict(audio):
 
 	return predict
 
-seconds = 5
+scan_interval = 1
 
 y, rate = librosa.load('engines.wav', sr=16000)
 sample_audio = Helpers.create_sample('unknown', 16000, y)
-samples = Helpers._split_sample(sample_audio, seconds)
+samples = Helpers._split_sample(sample_audio, scan_interval)
 
 ac_labels = []
 for i, sample in enumerate(samples):
 	label = Predict(sample)
 	if not label:
 		continue
-	start = float(i*seconds)
-	end = (i*seconds + seconds)
+	start = float(i * scan_interval)
+	end = (i * scan_interval + scan_interval)
 	entry = Helpers.ac_entry(start,end,label)
-	ac_labels.append(entry)
+
+	if ac_labels and ac_labels[-1]['label'] == label:
+		ac_labels[-1]['end'] = end
+	else:
+		ac_labels.append(entry)
 
 print("finish")
 print(ac_labels)
