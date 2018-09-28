@@ -1,18 +1,15 @@
-import sys
-def ProcessArgs():
-	path = sys.argv[1]
-	valid = ValidateAudioFile(path)
-	if not valid:
-		print(MSG_INCORRECT_AUDIO)
-		sys.exit(-1)
+import pandas as pd
+import librosa
+import matplotlib
+import argparse
 
-	AudioFile = GetAudioFile(path)
+parser = argparse.ArgumentParser(
+	description='Healthy/unhealthy motor classifier')
+parser.add_argument('-a', '--audio-file', type=str)
+parser.add_argument('-o', '--output', type=str, default=None)
+args = parser.parse_args()
 
-
-def WavToText(audio_file):
-	pass
-
+parser.print_help()
 
 
-if __name__ == "__main__":
-	pass
+print(args)

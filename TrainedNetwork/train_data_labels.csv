@@ -1,0 +1,10 @@
+filename,start,end,label
+engines.wav,55,58,Unhealthy
+engines.wav,1:05,1:10,Unhealthy
+engines.wav,1:20,1:25,Unhealthy
+engines.wav,3:10,3:15,Healthy
+engines.wav,3:30,3:33,Healthy
+engines.wav,3:55,4:00,Healthy
+engines.wav,4:20,4:25,Healthy
+engines.wav,4:40,4:45,Healthy
+engines.wav,2:40,2:45,Silence
