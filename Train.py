@@ -28,8 +28,10 @@ layer1_count = 250  # all combinations of different motors and noises, maybe
 layer2_count = 50
 
 # 'Learning speed'
-epoch_count = 100
-batch_size = 40
+epoch_count = 120
+batch_size = 50
+test_percent = 0.9
+
 
 # Loading audio samples and converting to labels and numpy arrays
 print("Loading samples...")
@@ -46,8 +48,9 @@ dl_count = len(set(labels))
 model = Sequential()
 
 
+
+# I've read sigmoid is not ideal for DNN, so I used relu
 # Dropout works best at 0.5
-# I heard sigmoid is not ideal for DNN, so I used relu
 
 model.add(Dense(layer1_count, input_shape=(sample_size,)))
 model.add(Activation('relu'))
@@ -61,9 +64,9 @@ model.add(Dense(dl_count))
 model.add(Activation('softmax'))
 
 # split train and test data
-X_train, X_test, y_train, y_test = train_test_split(tr_data, data_labels, test_size=0.7, random_state=0)
+X_train, X_test, y_train, y_test = train_test_split(tr_data, data_labels, test_size=test_percent, random_state=0)
 
-# I used loss functions and optimizers which are used for sound processing
+# I used loss function and optimizer which are used for sound processing
 model.compile(loss='categorical_crossentropy', metrics=['accuracy'], optimizer='adam')
 model.fit(X_train, y_train, batch_size=batch_size, epochs=epoch_count, validation_data=(X_test, y_test))
 
