@@ -4,6 +4,7 @@ from keras.layers import Dense, Dropout, Activation
 from keras.utils import np_utils
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
+import keras.layers
 import os
 from Core import DataHelper
 
