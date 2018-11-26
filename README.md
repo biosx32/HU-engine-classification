@@ -1,5 +1,3 @@
-# probably windows-only because of different path interpretation
-
 Requirements: keras, numpy, sklearn, librosa
 
 * Train network
@@ -13,4 +11,4 @@ Requirements: keras, numpy, sklearn, librosa
 	- if '-out' not provided, it will generate file like '[audio-file].report.txt'
 
 	
-	
+# notice: windows-only
