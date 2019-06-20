@@ -1,14 +1,17 @@
+# Supported platforms: windows
+
 Requirements: keras, numpy, sklearn, librosa
 
 * Train network
-	- put wave files into data folder
-	- write out filename, time (start, stop) and label in metadata CSV file, example is in 'metedata.csv'
+	- put audio files into Data folder
+	- fill out 'metadata.csv' 
+		- in the format of '[filename],[time-start],[time-end],[description-label], one file per line
 	- run 'python3 Train.py'
+	- this will generate dnn model in 'trainedNetwork' folder
 
 * Classify wav file
-	- put .wav file in Data folder or main folder
-	- run 'python3 Classify.py [-out path] [-model path] [-interval xy] wav-file-path'
-	- if '-out' not provided, it will generate file like '[audio-file].report.txt'
-
-	
-# notice: windows-only
+	- run 'python3 Classify.py [audio-path]'
+	- optional arguments are:
+		'-out'  => "Output path - default is [audio-filename].report.txt")
+		'-model'  =>  "Change DNN model save path"
+		'-interval' => "experimental, change audio sampling interval"

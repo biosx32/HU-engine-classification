@@ -1,11 +1,8 @@
 from Core.Predictor import load_dnn_model, generate_labels_for_sample
-from Core import DataHelper
+from Core import Processing
 import argparse
 
-# nothing much to explain in this file
-
 model_path='.\\TrainedNetwork\\dnn_model'
-output_path = None
 
 parser = argparse.ArgumentParser(description='Healthy/unhealthy motor classifier')
 parser.add_argument('audio-path', type=str, help="Absolute or relative path")
@@ -20,22 +17,19 @@ model_path = args['model'] or model_path
 output_path = args['out'] or audio_path + ".report.txt"
 interval = float(args['interval'])
 
-# load everything here...
+
 print("--- Healthy/unhealthy motor classifier ---")
 print("Loading model...")
-mlb = load_dnn_model(model_path)
+dnn_model = load_dnn_model(model_path)
 
 print("Loading audio sample...")
-audio, rate = DataHelper.load_audio_file(audio_path, 16000)
-audio_sample = DataHelper.create_sample('verify_sample', rate, audio)
+audio, rate = Processing.load_audio_file(audio_path, 16000)
+audio_sample = Processing.create_sample('verify_sample', rate, audio)
 
-# predict labels
-print("Generating labels...")
-timestamps = generate_labels_for_sample(mlb, audio_sample, label_interval=interval)
 
-# save lables in output file
 print("Saving labels at: ", output_path)
-DataHelper.save_ac_output(output_path, timestamps)
+timestamps = generate_labels_for_sample(dnn_model, audio_sample, label_interval=interval)
+Processing.save_ac_output(output_path, timestamps)
 
-print("Done!!!")
+print("Done.")
 
